@@ -48,27 +48,6 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/credit_card_layout"
-        style="@style/SelectableItemBackground"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:orientation="vertical">
-
-        <TextView
-            style="@style/PaymentOptionButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/title_fragment_credit_card_form" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/separator_color" />
-
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/emi_layout"
         style="@style/SelectableItemBackground"
         android:layout_width="match_parent"
