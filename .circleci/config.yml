@@ -1,7 +1,7 @@
 defaults: &defaults
   working_directory: ~/code
   docker:
-    - image: circleci/android:api-27-alpha
+    - image: circleci/android:api-30
   environment:
     JVM_OPTS: -Xmx3200m
 
@@ -55,8 +55,8 @@ jobs:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "android-sdk/build.gradle" }}
       - run:
-          name: Publish to Bintray
-          command: ./gradlew bintrayUpload
+          name: Publish to Maven
+          command: ./gradlew closeAndReleaseRepository
 
 workflows:
   version: 2

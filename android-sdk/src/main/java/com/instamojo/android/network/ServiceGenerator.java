@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 
-import com.instamojo.android.BuildConfig;
 import com.instamojo.android.Instamojo;
 import com.instamojo.android.helpers.Logger;
 
@@ -28,6 +27,7 @@ public class ServiceGenerator {
 
     private static Retrofit.Builder builder = new Retrofit.Builder()
             .client(httpClient)
+            .addCallAdapterFactory(new LiveDataCallAdapterFactory())
             .addConverterFactory(GsonConverterFactory.create());
 
     private static Retrofit retrofit;
@@ -61,7 +61,7 @@ public class ServiceGenerator {
 
         private String getUserAgent() {
             if (userAgent == null || userAgent.isEmpty()) {
-                userAgent = "instamojo-android-sdk/" + BuildConfig.VERSION_NAME
+                userAgent = "instamojo-android-sdk/" + "3.6.0"
                         + " android/" + Build.VERSION.RELEASE
                         + " " + Build.BRAND + "/" + Build.MODEL;
             }

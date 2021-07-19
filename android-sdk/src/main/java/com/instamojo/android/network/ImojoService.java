@@ -1,5 +1,7 @@
 package com.instamojo.android.network;
 
+import androidx.lifecycle.LiveData;
+
 import com.instamojo.android.models.CardPaymentResponse;
 import com.instamojo.android.models.GatewayOrder;
 import com.instamojo.android.models.UPIStatusResponse;
@@ -19,17 +21,17 @@ import retrofit2.http.Url;
 public interface ImojoService {
 
     @GET("v2/gateway/orders/{orderID}/checkout-options/")
-    Call<GatewayOrder> getPaymentOptions(@Path("orderID") String orderID);
+    LiveData<ApiResponse<GatewayOrder>> getPaymentOptions(@Path("orderID") String orderID);
 
     @FormUrlEncoded
     @POST
-    Call<CardPaymentResponse> collectCardPayment(@Url String url, @FieldMap Map<String, String> cardPaymentRequest);
+    LiveData<ApiResponse<CardPaymentResponse>> collectCardPayment(@Url String url, @FieldMap Map<String, String> cardPaymentRequest);
 
     @FormUrlEncoded
     @POST
-    Call<UPISubmissionResponse> collectUPIPayment(@Url String url, @Field("virtual_address") String upiID);
+    LiveData<ApiResponse<UPISubmissionResponse>> collectUPIPayment(@Url String url, @Field("virtual_address") String upiID);
 
     @GET
-    Call<UPIStatusResponse> getUPIStatus(@Url String url);
+    LiveData<ApiResponse<UPIStatusResponse>> getUPIStatus(@Url String url);
 
 }
